@@ -1,32 +1,35 @@
 package com.leonealejandro;
 
-public class Student {
+public class Student extends Person {
     private String[] scoresInArray;
     private int finalScore;
 
-    public Student(String scores) {
+    public Student(String data, String scores) {
+        super(data);
         this.scoresInArray = scores.split(" ");
-        }
+    }
 
-    private void scoreCalculator(){
-        for (int i = 0; i < scoresInArray.length-1; i++) {
+    private void scoreCalculator() {
+        for (int i = 0; i < scoresInArray.length; i++) {
             finalScore = finalScore + Integer.parseInt(scoresInArray[i]);
         }
         finalScore = finalScore / scoresInArray.length;
-        }
+    }
 
-    public void scoreGrader(){
+    public void scoreGrader() {
+        scoreCalculator();
         if (finalScore < 40)
-            System.out.println("Grade : T");
+            System.out.println("Grade: T");
         if (40 <= finalScore && finalScore < 55)
-            System.out.println("Grade : D");
+            System.out.println("Grade: D");
         if (55 <= finalScore && finalScore < 70)
-            System.out.println("Grade : P");
+            System.out.println("Grade: P");
         if (70 <= finalScore && finalScore < 80)
-            System.out.println("Grade : A");
+            System.out.println("Grade: A");
         if (80 <= finalScore && finalScore < 90)
-            System.out.println("Grade : E");
+            System.out.println("Grade: E");
         if (90 <= finalScore && finalScore <= 100)
-            System.out.println("Grade : O");
+            System.out.println("Grade: O");
+
     }
 }

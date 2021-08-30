@@ -4,7 +4,6 @@ public class Person {
     private String firstName;
     private String lastname;
     private int idNumber;
-    private int[] scores;
 
     public Person(String data) {
         dataSplitter(data);
