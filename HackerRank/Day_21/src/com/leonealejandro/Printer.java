@@ -1,9 +1,10 @@
 package com.leonealejandro;
 
-public class Printer {
+public class Printer<E> {
 
-    public static void printArray(){
-
+    public static <E> void printArray(E[] array){
+        for (E element : array){
+            System.out.println(element);
+        }
     }
-
 }

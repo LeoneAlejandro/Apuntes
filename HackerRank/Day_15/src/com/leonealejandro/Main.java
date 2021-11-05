@@ -16,9 +16,15 @@ class Node {
 
 public class Main {
     public static Node insert(Node head,int data) {
-        Node nodo = new Node(data);
-        nodo.next = head;
-        return nodo;
+        if (head==null){
+            head = new Node(data);
+        } else{
+            Node start = head;
+            while(start.next!=null){
+                start=start.next;
+            } start.next = new Node(data);
+        }
+        return head;
     }
 
     public static void display(Node head) {
