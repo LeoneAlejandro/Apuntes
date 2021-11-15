@@ -16,11 +16,15 @@ class Node{
 public class Main {
 
     public static Node removeDuplicates(Node head) {
-        //Write your code here
-
+        Node nodo = head;
+        while (nodo.next!=null){
+            if (nodo.data == nodo.next.data) {
+            nodo.next = nodo.next.next;
+            } else nodo = nodo.next;
+        }return head;
     }
 
-    public static  Node insert(Node head,int data)
+    public static Node insert(Node head,int data)
     {
         Node p=new Node(data);
         if(head==null)
@@ -46,8 +50,7 @@ public class Main {
             start=start.next;
         }
     }
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         Scanner sc=new Scanner(System.in);
         Node head=null;
         int T=sc.nextInt();
