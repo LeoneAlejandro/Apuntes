@@ -1,8 +1,46 @@
 package com.leonealejandro;
 
-public class Main {
+import java.io.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Stream;
 
-    public static void main(String[] args) {
-	// write your code here
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
+
+//        Collections.sort(candles);
+//        int n = candles.size()-1;
+//        int cant =1;
+//        while (candles.get(n)==candles.get(n-1)){
+//            n--;
+//            cant++;
+//        }
+//        return cant;
+
+class Result {
+    public static int birthdayCakeCandles(List<Integer> candles) {
+        return Collections.frequency(candles,Collections.max(candles));
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int candlesCount = Integer.parseInt(bufferedReader.readLine().trim());
+
+        List<Integer> candles = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
+                .map(Integer::parseInt)
+                .collect(toList());
+
+        int result = Result.birthdayCakeCandles(candles);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
     }
 }
