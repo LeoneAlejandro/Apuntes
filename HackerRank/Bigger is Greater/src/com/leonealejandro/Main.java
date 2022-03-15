@@ -8,38 +8,41 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt(); sc.nextLine();
+        int n = sc.nextInt();sc.nextLine();
+
         for (int k = 0; k < n; k++) {
             String s = sc.nextLine();
-            char temp = 0;
-            int pos = 0;
+            char[] stoArray = s.toCharArray();
 
-            List<Character> stoList = new ArrayList<Character>();
-            for (char ch : s.toCharArray()){
-                stoList.add(ch);
+            int i = s.length()-1;
+            while (i>1 && stoArray[i-1] >= stoArray[i]){
+                i--;
             }
-
-            for (int i = s.length()-1; i >= 0; i--) {
-                for (int j = i-1; j >= 0 ; j--) {
-                    if (stoList.get(i) > stoList.get(j)) {
-                        temp = stoList.get(i);
-                        stoList.remove(i);
-                        stoList.add(j, temp);
-                        temp = 1;
-                        pos = j;
-                        break;
-                    }
-                    if (temp == 1) break;
-                }
-                if (temp == 1) break;
+            if (i<=0){
+                System.out.println("no answer");
+            } else {
+            int j = s.length()-1;
+            while (j>0 && stoArray[j]<=stoArray[i-1]){
+                j--;
             }
-
-            if (temp == 0) System.out.println("no answer");
+            if (j<i){
+                System.out.println("no answer");}
             else {
-                Collections.sort(stoList.subList(pos+1, s.length()));
-                System.out.println(stoList.toString().replaceAll("\\[|\\]", "").replaceAll(", ",""));
-            }
+            char temp = stoArray[i-1];
+            stoArray[i-1] = stoArray[j];
+            stoArray[j] = temp;
 
+            j = s.length()-1;
+            while (i<j){
+                temp = stoArray[j];
+                stoArray[j] = stoArray[i];
+                stoArray[i] = temp;
+                i++;
+                j--;
+            }
+                System.out.println(new String(stoArray));
+            }
+            }
         }
     }
 }
