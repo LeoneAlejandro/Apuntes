@@ -22,7 +22,6 @@ public class Main {
                 }dist++;
             }
         }
-
         System.out.println(maxdif);
         }
 
