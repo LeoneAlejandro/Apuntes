@@ -1,7 +1,7 @@
 package com.leonealejandro;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -24,8 +24,23 @@ public class Main {
                 Pattern.add(sc.next());
             }
             //BUSQUEDA DE PATTERN EN GRID
+            boolean found = false;
+            for (int j = 0; j < gn-pm; j++) {
+                for (int k = 0; k < pm-1; k++) {
+                    if (Grid.get(i).contains(Pattern.get(k))){
+                        found = true;
+                        for (int l = 1; l < pm; l++) {
+                            if (!Grid.get(i+l).contains(Pattern.get(k+l))){
+                                found = false;
+                                break;
+                            }
+                        }
+                    }
+                }
 
-
+            }
+            if (found) System.out.println("TRUE");
+            else System.out.println("FALSE");
 
 
         }//NO SALIR DE ESTE FOR
